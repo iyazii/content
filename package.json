@@ -19,9 +19,10 @@
     "lint:json": "prettier -c \"**/*.json(c)?\"",
     "lint:md": "markdownlint-cli2 \"**/*.md\"",
     "lint:yml": "prettier -c \"**/*.yml\"",
-    "prepare": "husky install",
+    "prepare": "yarn run snyk-protect && husky install",
     "start": "yarn up-to-date-check && env-cmd --silent cross-env CONTENT_ROOT=files REACT_APP_DISABLE_AUTH=true BUILD_OUT_ROOT=build yari-server",
-    "up-to-date-check": "node scripts/up-to-date-check.js"
+    "up-to-date-check": "node scripts/up-to-date-check.js",
+    "snyk-protect": "snyk-protect"
   },
   "dependencies": {
     "@mdn/yari": "2.12.2",
@@ -31,6 +32,8 @@
     "lint-staged": "13.2.1",
     "markdownlint-cli2": "0.7.1",
     "markdownlint-rule-search-replace": "1.0.9",
-    "prettier": "2.8.7"
-  }
+    "prettier": "2.8.7",
+    "@snyk/protect": "latest"
+  },
+  "snyk": true
 }
